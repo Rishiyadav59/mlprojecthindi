@@ -109,6 +109,40 @@ class ModelTrainer:
 
             model_names = list(params.keys())
 
+            actual_model=""
+
+            for model in model_names:
+                if best_model_name == model:
+                    actual_model=actual_model+model
+
+            best_parms=params[actual_model]
+
+            mlflow.set_registry_uri("https://dagshub.com/Rishiyadav59/mlprojecthindi.mlflow")
+            tracking_url_type_store=urlparse(mlflow.get_tracking_uri()).scheme
+
+
+
+            
+            with mlflow.start_run():
+
+                predicted_qualitites=best_model.predict(X_test)
+
+                (rmse,mae,r2)=self.eval_metrics(y_test,predicted_qualitites)
+
+                mlflow.log_params(best_parms)
+                
+                mlflow.log_metric("rmse",rmse)
+                mlflow.log_metric("r2",r2)
+                mlflow.log_metric("mae",mae)
+
+                if tracking_url_type_store !="file":
+
+                    mlflow.sklearn.log_model(best_model,"model",registered_model_name=actual_model)
+
+                else:
+                    mlflow.sklearn.log_model(best_model, "model")
+
+
             
 
 
