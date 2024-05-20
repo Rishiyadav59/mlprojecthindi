@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/RISHI%20KUMAR%20YADAV/Desktop/mlproject/mlruns/0/11a1e67fd5b14195b7521435c9f54102/artifacts
+end_time: 1716166209671
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 11a1e67fd5b14195b7521435c9f54102
+run_name: bald-jay-379
+run_uuid: 11a1e67fd5b14195b7521435c9f54102
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1716166206505
+status: 3
+tags: []
+user_id: root
